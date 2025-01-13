@@ -5,11 +5,11 @@ import { FaGem, FaGithub } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg';
 import { MdDashboard } from 'react-icons/md';
 import { FaUserGraduate } from "react-icons/fa";
-
+import { Link } from 'react-router-dom';
 import "./SideBar.scss";
 
-const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
-
+const SideBar = (props) => {
+    const { image, collapsed, toggled, handleToggleSidebar } = props;
     return (
         <ProSidebar
             image={sidebarBg}
@@ -37,20 +37,21 @@ const SideBar = ({ image, collapsed, toggled, handleToggleSidebar }) => {
 
             <SidebarContent>
                 <Menu iconShape="circle">
-                    <MenuItem
-                        icon={<MdDashboard />}
-                    >
-                        Dashboard
+                    <MenuItem icon={<MdDashboard />}>
+                        <Link to="/admins">Dashboard</Link>
                     </MenuItem>
                 </Menu>
                 <Menu iconShape="circle">
-                    <SubMenu
-                        icon={<FaGem />}
-                        title="Features"
-                    >
-                        <MenuItem>User Management</MenuItem>
-                        <MenuItem>Quiz Management</MenuItem>
-                        <MenuItem>Question Management</MenuItem>
+                    <SubMenu icon={<FaGem />} title="Features">
+                        <MenuItem>
+                            <Link to="/admins/manage-users">User Management</Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <Link to="/admins">Quiz Management</Link>
+                        </MenuItem>
+                        <MenuItem>
+                            <Link to="/admins">Question Management</Link>
+                        </MenuItem>
                     </SubMenu>
                 </Menu>
             </SidebarContent>
