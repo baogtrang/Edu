@@ -1,19 +1,32 @@
+import { useState } from "react";
 import CreateUserModal from "./CreateUserModal";
+import "./ManageUser.scss";
+import { FcPlus } from "react-icons/fc";
 
 const ManageUser = (props) => {
+    const [showModal, setShowModal] = useState(false);
+
     return (
-        <div classNameName="manage-user-container">
-            <div classNameName="title">
+        <div className="manage-user-container">
+            <div className="title">
                 Manage User
             </div>
-            <div classNameName="users-content">
-                <button>Add new users</button>
+            <div className="users-content">
+                <div className="add-user-btn">
+                    <button className="btn btn-primary"
+                        onClick={() => setShowModal(true)}>
+                        <FcPlus /> Add new users
+                    </button>
+                </div>
+                <div className="user-table-container">
+                    User Table
+                </div>
+                <CreateUserModal
+                    show={showModal}
+                    setShow={setShowModal}
+                />
             </div>
-            <div>
-                User Table
-                <CreateUserModal />
-            </div>
-        </div>
+        </div >
     )
 }
 
